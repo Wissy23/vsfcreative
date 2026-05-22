@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
 import { HeroMotion } from "./HeroMotion";
 
 const fadeUp = {
