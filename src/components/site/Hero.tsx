@@ -28,7 +28,6 @@ export function Hero() {
           variants={fadeUp}
           className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 backdrop-blur px-4 py-1.5 text-xs uppercase tracking-widest text-muted-foreground"
         >
-          <Sparkles className="h-3.5 w-3.5 text-accent" />
           MOTION DESIGN FOR SAAS & AI FOUNDERS
         </motion.div>
 
