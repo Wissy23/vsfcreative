@@ -28,7 +28,7 @@ export function Hero() {
           className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 backdrop-blur px-4 py-1.5 text-xs uppercase tracking-widest text-muted-foreground"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-          We make SaaS make sense
+          WE MAKE SAAS MAKE SENSE
         </motion.div>
 
         <motion.h1
