@@ -39,9 +39,9 @@ export function Hero() {
           variants={fadeUp}
           className="mt-8 font-display text-5xl sm:text-7xl lg:text-[7.5rem] leading-[0.95] tracking-tight text-foreground max-w-5xl"
         >
-          Your product is great.
+          We Make Your Product
           <br />
-          <span className="text-muted-foreground">Nobody gets it yet.</span>
+          <span className="text-muted-foreground">Impossible to Misunderstand</span>
         </motion.h1>
 
         <motion.p
@@ -51,8 +51,8 @@ export function Hero() {
           variants={fadeUp}
           className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed"
         >
-          Most founders lose users in the first 10 seconds. We fix that with
-          motion design videos built to convert — not just impress.
+          VSF Creative produces premium explainer and motion design videos that show
+          your actual product in action, so your users get it, trust it, and sign up.
         </motion.p>
 
         <motion.div
@@ -66,13 +66,13 @@ export function Hero() {
             href="#work"
             className="inline-flex items-center rounded-full bg-foreground px-7 py-3.5 text-sm font-medium text-background hover:opacity-90 transition"
           >
-            Watch a Demo Reel
+            See Our Work
           </a>
           <a
             href="#contact"
             className="inline-flex items-center rounded-full border border-border bg-transparent px-7 py-3.5 text-sm font-medium text-foreground hover:bg-card transition"
           >
-            Get a Free Quote
+            Start a Project
           </a>
         </motion.div>
       </div>
