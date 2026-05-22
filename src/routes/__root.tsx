@@ -79,6 +79,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "We turn SaaS products into motion design videos that convert. Book a free strategy call." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "VSF Creative — SaaS Motion Design Studio" },
+      { name: "twitter:description", content: "We turn SaaS products into motion design videos that convert. Book a free strategy call." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/cf2a4835-ac62-4933-a751-5628a5394933" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/cf2a4835-ac62-4933-a751-5628a5394933" },
     ],
     links: [
       {
