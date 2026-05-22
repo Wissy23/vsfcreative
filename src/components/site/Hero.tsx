@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
 import { HeroMotion } from "./HeroMotion";
 
 const fadeUp = {
@@ -27,7 +28,7 @@ export function Hero() {
           variants={fadeUp}
           className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 backdrop-blur px-4 py-1.5 text-xs uppercase tracking-widest text-muted-foreground"
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+          <Sparkles className="h-3.5 w-3.5 text-accent" />
           ✦ Motion Design for SaaS & AI Founders
         </motion.div>
 
