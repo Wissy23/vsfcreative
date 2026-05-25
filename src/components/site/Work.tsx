@@ -1,20 +1,77 @@
 import { motion } from "framer-motion";
+import { Play } from "lucide-react";
 import { SectionLabel } from "./SectionLabel";
 
-type Project = {
+// --- Video Configuration ---
+// Paste YouTube embed URLs for each project below.
+// Format: https://www.youtube.com/embed/VIDEO_ID
+const PROJECT_VIDEOS: { name: string; tag: string; embedUrl: string }[] = [
+  { name: "Linearflow — Product Demo", tag: "Product Demo", embedUrl: "" },
+  { name: "Northstar Launch Film", tag: "Launch Video", embedUrl: "" },
+  { name: "Cohort — Series A Reel", tag: "Investor Deck Reel", embedUrl: "" },
+];
+// ---------------------------
+
+function VideoBox({
+  name,
+  tag,
+  embedUrl,
+  index,
+}: {
   name: string;
   tag: string;
-  gradient: string;
-};
+  embedUrl: string;
+  index: number;
+}) {
+  const hasEmbed = embedUrl.trim().length > 0;
 
-const projects: Project[] = [
-  { name: "Linearflow — Product Demo", tag: "Product Demo", gradient: "from-indigo-500/40 via-purple-500/20 to-transparent" },
-  { name: "Northstar Launch Film", tag: "Launch Video", gradient: "from-sky-500/40 via-blue-500/20 to-transparent" },
-  { name: "Cohort — Series A Reel", tag: "Investor Deck Reel", gradient: "from-fuchsia-500/40 via-pink-500/20 to-transparent" },
-  { name: "Pilot CRM — Feature Spotlight", tag: "Product Demo", gradient: "from-emerald-500/40 via-teal-500/20 to-transparent" },
-  { name: "Glyph Studio — Brand Film", tag: "Launch Video", gradient: "from-orange-500/40 via-rose-500/20 to-transparent" },
-  { name: "Forma — Investor Reel", tag: "Investor Deck Reel", gradient: "from-violet-500/40 via-indigo-500/20 to-transparent" },
-];
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{
+        duration: 0.7,
+        ease: [0.22, 1, 0.36, 1],
+        delay: index * 0.1,
+      }}
+      className="group"
+    >
+      <div className="relative aspect-video overflow-hidden rounded-2xl border border-border bg-card/50 backdrop-blur-sm shadow-2xl shadow-accent/5">
+        {hasEmbed ? (
+          <iframe
+            src={embedUrl}
+            title={name}
+            className="absolute inset-0 h-full w-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-card/80 text-muted-foreground">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full border border-border bg-background/50">
+              <Play className="h-5 w-5 text-foreground" />
+            </div>
+            <p className="text-sm">
+              Add a video URL in{" "}
+              <code className="rounded bg-border px-1.5 py-0.5 text-xs text-foreground">
+                Work.tsx
+              </code>
+            </p>
+          </div>
+        )}
+      </div>
+
+      <div className="mt-4 flex items-center justify-between">
+        <h3 className="font-display text-lg translate-y-0 group-hover:-translate-y-0.5 transition-transform duration-500">
+          {name}
+        </h3>
+        <span className="inline-flex items-center rounded-full bg-background/70 backdrop-blur px-3 py-1 text-xs text-foreground border border-border">
+          {tag}
+        </span>
+      </div>
+    </motion.div>
+  );
+}
 
 export function Work() {
   return (
@@ -26,68 +83,17 @@ export function Work() {
             Videos that move product
           </h2>
           <p className="max-w-md text-muted-foreground">
-            A few things we've shipped for founders who refused to settle for
+            A few things we&apos;ve shipped for founders who refused to settle for
             screen recordings.
           </p>
         </div>
 
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16">
-          {projects.map((p, i) => (
-            <ProjectCard key={p.name} project={p} index={i} />
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
+          {PROJECT_VIDEOS.map((p, i) => (
+            <VideoBox key={p.name} {...p} index={i} />
           ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const offset = index % 2 === 0 ? "md:-translate-y-12" : "md:translate-y-12";
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative ${offset}`}
-    >
-      <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-card border border-border">
-        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
-        {/* animated faux UI elements */}
-        <div className="absolute inset-8 rounded-lg border border-white/10 backdrop-blur-sm" />
-        <div className="absolute top-12 left-12 right-12 h-2 rounded-full bg-white/10 overflow-hidden">
-          <motion.div
-            className="h-full bg-accent"
-            initial={{ width: "20%" }}
-            whileInView={{ width: "85%" }}
-            viewport={{ once: false }}
-            transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-          />
-        </div>
-        <div className="absolute bottom-12 left-12 flex gap-2">
-          {[0,1,2].map((d) => (
-            <motion.div
-              key={d}
-              className="h-8 w-8 rounded-md bg-white/10"
-              animate={{ opacity: [0.3, 0.9, 0.3] }}
-              transition={{ duration: 2, delay: d * 0.3, repeat: Infinity }}
-            />
-          ))}
-        </div>
-
-        {/* tag */}
-        <span className="absolute top-4 left-4 z-10 inline-flex items-center rounded-full bg-background/70 backdrop-blur px-3 py-1 text-xs text-foreground border border-border">
-          {project.tag}
-        </span>
-
-        {/* hover overlay */}
-        <div className="absolute inset-0 bg-background/0 group-hover:bg-background/40 transition-colors duration-500" />
-      </div>
-      <div className="mt-4 overflow-hidden">
-        <h3 className="font-display text-xl translate-y-0 group-hover:-translate-y-1 transition-transform duration-500">
-          {project.name}
-        </h3>
-      </div>
-    </motion.div>
   );
 }
