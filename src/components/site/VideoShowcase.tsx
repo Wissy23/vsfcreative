@@ -9,7 +9,7 @@ const VIDEO_SRC = ""; // <-- leave empty to use embed fallback
 
 // Option 2: YouTube / Vimeo / Loom embed link
 // Paste the full embed URL here (e.g., https://www.youtube.com/embed/VIDEO_ID)
-const EMBED_URL = ""; // <-- paste embed URL here if not using VIDEO_SRC
+const EMBED_URL = "https://www.youtube.com/embed/1nHsKQwqKzc"; // <-- paste embed URL here if not using VIDEO_SRC
 // ---------------------
 
 export function VideoShowcase() {
