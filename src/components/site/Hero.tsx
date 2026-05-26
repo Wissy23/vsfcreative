@@ -39,9 +39,7 @@ export function Hero() {
           variants={fadeUp}
           className="mt-8 font-display text-5xl sm:text-7xl lg:text-[7.5rem] leading-[0.95] tracking-tight text-foreground max-w-5xl"
         >
-          We Make Your Product
-          <br />
-          <span className="text-muted-foreground">Impossible to Misunderstand</span>
+          <span className="text-muted-foreground">Premium Explainer Videos for SaaS and AI Founders</span>
         </motion.h1>
 
         <motion.p
@@ -51,8 +49,7 @@ export function Hero() {
           variants={fadeUp}
           className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed"
         >
-          VSF Creative produces premium explainer and motion design videos that show
-          your actual product in action, so your users get it, trust it, and sign up.
+          We produce premium explainer videos that show your product in action — so users get it and sign up
         </motion.p>
 
         <motion.div
