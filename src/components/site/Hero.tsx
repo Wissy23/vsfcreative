@@ -39,7 +39,7 @@ export function Hero() {
           variants={fadeUp}
           className="mt-8 font-display text-5xl sm:text-7xl lg:text-[7.5rem] leading-[0.95] tracking-tight text-foreground max-w-5xl text-slate-50"
         >
-          <span className="text-muted-foreground">Premium Explainer Videos for SaaS and AI Founders</span>
+          Premium Explainer Videos for SaaS and AI <span className="text-muted-foreground">Founders</span>
         </motion.h1>
 
         <motion.p
