@@ -26,10 +26,10 @@ export function Hero() {
           initial="hidden"
           animate="show"
           variants={fadeUp}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 backdrop-blur px-4 py-1.5 text-xs uppercase tracking-widest text-muted-foreground"
+          className="inline-flex items-center gap-2 rounded-full border border-border bg-foreground/90 backdrop-blur px-4 py-2 text-xs uppercase tracking-widest text-background"
         >
           <Sparkles className="h-3.5 w-3.5 text-accent" />
-          ✦ Motion Design for SaaS & AI Founders
+          Motion Design for SaaS & AI Founders
         </motion.div>
 
         <motion.h1
