@@ -31,6 +31,10 @@ export function VideoShowcase() {
             <video
               className="absolute inset-0 h-full w-full object-cover"
               controls
+              autoPlay
+              loop
+              muted
+              playsInline
               poster=""
               preload="metadata"
             >
