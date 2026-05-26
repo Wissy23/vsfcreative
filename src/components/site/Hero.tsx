@@ -26,7 +26,7 @@ export function Hero() {
           initial="hidden"
           animate="show"
           variants={fadeUp}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-foreground/90 backdrop-blur px-4 py-2 text-xs uppercase tracking-widest text-background"
+          className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 backdrop-blur px-4 py-2 text-xs uppercase tracking-widest text-foreground"
         >
           <Sparkles className="h-3.5 w-3.5 text-accent" />
           Motion Design for SaaS & AI Founders
