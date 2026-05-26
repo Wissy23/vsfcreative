@@ -49,7 +49,7 @@ export function Hero() {
           variants={fadeUp}
           className="mt-8 max-w-xl text-lg text-muted-foreground leading-relaxed"
         >
-          We produce premium explainer videos that show your product in action — so users get it and sign up
+          We produce premium explainer videos that show your product in action, so users get it and sign up
         </motion.p>
 
         <motion.div
