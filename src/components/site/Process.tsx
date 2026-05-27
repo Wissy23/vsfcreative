@@ -33,7 +33,7 @@ export function Process() {
           How we go from idea to impact
         </h2>
         <p className="mt-4 text-muted-foreground max-w-xl">
-          No 4-week fluff. A focused process built to ship.
+          No <span className="font-accent">4-week</span> fluff. A focused process built to ship.
         </p>
 
         {/* Desktop horizontal timeline */}

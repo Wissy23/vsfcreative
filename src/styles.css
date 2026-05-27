@@ -34,6 +34,7 @@
   --color-ring-offset-background: var(--background);
   --font-display: "Clash Display", "PP Neue Montreal", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-accent: "Playfair Display", ui-serif, Georgia, serif;
 }
 
 :root {
@@ -81,6 +82,7 @@
 
 @layer utilities {
   .font-display { font-family: var(--font-display); }
+  .font-accent { font-family: var(--font-accent); font-style: italic; }
   .grain-overlay::after {
     content: "";
     position: fixed;
