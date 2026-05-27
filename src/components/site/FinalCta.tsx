@@ -18,7 +18,7 @@ export function FinalCta() {
           transition={{ duration: 0.8 }}
           className="font-display text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05]"
         >
-          Ready to Make Your Product Crystal Clear?
+          Ready to Make Your Product <span className="font-accent">Crystal Clear</span>?
         </motion.h2>
         <p className="mt-8 text-lg text-muted-foreground max-w-xl mx-auto">
           Let's build a premium explainer video that shows your product, builds trust, and drives signups.

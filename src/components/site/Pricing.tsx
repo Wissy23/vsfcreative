@@ -20,7 +20,7 @@ export function Pricing() {
       <div className="mx-auto max-w-7xl px-6 lg:px-10 text-center">
         <SectionLabel>Investment</SectionLabel>
         <h2 className="mt-6 font-display text-4xl sm:text-6xl tracking-tight max-w-3xl mx-auto">
-          Simple Pricing. Built Around Your Goals.
+          Simple <span className="font-accent">Pricing</span>. Built Around Your Goals.
         </h2>
 
         <div className="mt-16 flex justify-center">
