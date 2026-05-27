@@ -18,22 +18,21 @@ export function FinalCta() {
           transition={{ duration: 0.8 }}
           className="font-display text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05]"
         >
-          Stop losing people at{" "}
-          <span className="text-muted-foreground italic">"let me explain."</span>
+          Ready to Make Your Product Crystal Clear?
         </motion.h2>
         <p className="mt-8 text-lg text-muted-foreground max-w-xl mx-auto">
-          One video. One clear message. Book a call and let's build it.
+          Let's build a premium explainer video that shows your product, builds trust, and drives signups.
         </p>
         <div className="mt-12">
           <a
-            href="mailto:hello@vsfcreative.com"
+            href="#contact"
             className="inline-flex items-center rounded-full bg-accent px-10 py-5 text-base font-medium text-accent-foreground hover:opacity-90 transition"
           >
-            Book a Free Call
+            Start a Project
           </a>
         </div>
         <p className="mt-6 text-xs uppercase tracking-widest text-muted-foreground">
-          No agency fluff · No retainers · Just great work
+          NO COMMITMENT · NO PRESSURE · JUST A CONVERSATION
         </p>
       </div>
     </section>
