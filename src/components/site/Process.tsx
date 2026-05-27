@@ -4,22 +4,22 @@ import { SectionLabel } from "./SectionLabel";
 const steps = [
   {
     n: "01",
-    title: "Diagnose",
+    title: "Introduction Call & Briefing",
     body: "We get obsessive about your product. What it does, who it's for, where people drop off. We leave this call with a clear creative direction.",
   },
   {
     n: "02",
-    title: "Blueprint",
+    title: "Script & Storyboard",
     body: "Script written for clarity and conversion. Storyboard built scene by scene. You approve before we animate a single frame.",
   },
   {
     n: "03",
-    title: "Build",
+    title: "Animation & SFX",
     body: "Animation, UI motion, sound design, music — all done in-house. No outsourcing. No handoffs. Just one focused team shipping your video.",
   },
   {
     n: "04",
-    title: "Launch Ready",
+    title: "Revisions & Delivery",
     body: "Final cuts in every ratio. 16:9, 9:16, 1:1. Captions available. Source files yours to keep.",
   },
 ];
