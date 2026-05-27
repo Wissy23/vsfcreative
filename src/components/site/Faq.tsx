@@ -8,24 +8,28 @@ import { SectionLabel } from "./SectionLabel";
 
 const faqs = [
   {
+    q: "How much does it cost?",
+    a: "Our pricing is custom — it depends on your goals, video length, and complexity. No fixed price fits everyone, so we tailor it to your specific project. Request a quote and we'll get back to you with a clear number.",
+  },
+  {
     q: "How fast can you deliver?",
-    a: "Four weeks standard. Need it faster? Talk to us — we've done rush projects before.",
+    a: "Most projects are completed in 10 to 14 days from kickoff. The faster you review and approve each stage, the faster we deliver.",
   },
   {
     q: "Do I need to write the script?",
-    a: "No. We write it. You just need to explain your product to us like you would to a friend.",
-  },
-  {
-    q: "What if I hate the first draft?",
-    a: "Won't happen — because you approve the storyboard first. But you still get 2 rounds of revisions.",
+    a: "Not at all. Script writing is fully included. We ask the right questions during the briefing call and craft a clear, conversion-focused script around your product. You just review and approve it.",
   },
   {
     q: "Can you make it feel like our brand?",
-    a: "Yes. We build around your colors, fonts, and tone. If you don't have a brand yet, we'll guide you.",
+    a: "Yes. We build every video around your colors, fonts, tone, and product UI. If you don't have a full brand identity yet, we'll guide you through the visual direction during the briefing stage.",
+  },
+  {
+    q: "Do you offer a free sample?",
+    a: "Yes. For serious founders who complete our briefing form, we offer a free 10-second custom sample video — including your logo animation and a quick product demonstration. This way you can see our quality before committing.",
   },
   {
     q: "Is this only for SaaS?",
-    a: "Mostly. If you have a digital product that needs to be explained visually, we're the right fit.",
+    a: "Mostly yes. We specialize in SaaS and AI products. If you have a Software or app that needs to be explained clearly and visually, we're the right fit for you.",
   },
 ];
 
