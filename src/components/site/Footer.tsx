@@ -28,7 +28,7 @@ export function Footer() {
 
         <h2
           aria-label="VSF Creative"
-          className="font-display leading-[0.85] tracking-[-0.04em] text-foreground lg:text-[16vw] text-8xl font-medium"
+          className="font-display leading-[0.85] tracking-[-0.04em] text-foreground lg:text-[16vw] text-8xl font-medium text-center"
         >
           VSF <span className="font-accent">Creative</span>
         </h2>
