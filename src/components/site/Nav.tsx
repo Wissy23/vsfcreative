@@ -40,14 +40,18 @@ export function Nav() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="https://cal.com/wisdom-odeh/15min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="ml-2 inline-flex items-center rounded-full bg-accent px-5 py-2 text-sm font-medium text-accent-foreground hover:opacity-90 transition"
           >
             Start a Project
           </a>
         </nav>
         <a
-          href="#contact"
+          href="https://cal.com/wisdom-odeh/15min"
+          target="_blank"
+          rel="noopener noreferrer"
           className="md:hidden inline-flex items-center rounded-full bg-accent px-4 py-1.5 text-xs font-medium text-accent-foreground"
         >
           Start

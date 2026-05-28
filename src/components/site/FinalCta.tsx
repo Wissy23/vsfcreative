@@ -25,7 +25,9 @@ export function FinalCta() {
         </p>
         <div className="mt-12">
           <a
-            href="#contact"
+            href="https://cal.com/wisdom-odeh/15min"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center rounded-full bg-accent px-10 py-5 text-base font-medium text-accent-foreground hover:opacity-90 transition"
           >
             Start a Project

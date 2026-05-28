@@ -51,7 +51,9 @@ export function Pricing() {
             </ul>
 
             <a
-              href="#contact"
+              href="https://cal.com/wisdom-odeh/15min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-10 inline-flex w-full max-w-sm mx-auto items-center justify-center rounded-full px-7 py-3.5 text-sm font-medium transition bg-accent text-accent-foreground hover:opacity-90"
             >
               Request a Quote
