@@ -22,11 +22,17 @@ export function Footer() {
             ))}
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-            {socials.map((s) => (
-              <a key={s} href="#" className="hover:text-foreground transition">
-                {s}
-              </a>
-            ))}
+          {socials.map((s) => (
+            <a
+              key={s.name}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition"
+            >
+              {s.name}
+            </a>
+          ))}
           </div>
         </div>
 
