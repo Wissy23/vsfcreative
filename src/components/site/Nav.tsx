@@ -27,7 +27,7 @@ export function Nav() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 h-16 flex items-center justify-between">
         <a href="#top" className="font-display text-lg tracking-tight text-foreground">
-          VSF <span className="text-muted-foreground">Creative</span>
+          VSF <span className="font-accent text-muted-foreground">Creative</span>
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
           {links.map((l) => (
