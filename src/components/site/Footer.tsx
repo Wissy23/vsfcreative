@@ -1,5 +1,9 @@
 const nav = ["Work", "Process", "Pricing", "FAQ"];
-const socials = ["LinkedIn", "X", "Instagram"];
+const socials = [
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/odehwisdom" },
+  { name: "X", href: "https://x.com/odeh_wisdom" },
+  { name: "Instagram", href: "https://www.instagram.com/w1sdom_am" },
+];
 
 export function Footer() {
   return (
