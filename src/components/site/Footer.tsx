@@ -1,5 +1,9 @@
 const nav = ["Work", "Process", "Pricing", "FAQ"];
-const socials = ["LinkedIn", "X", "Instagram"];
+const socials = [
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/odehwisdom" },
+  { name: "X", href: "https://x.com/odeh_wisdom" },
+  { name: "Instagram", href: "https://www.instagram.com/w1sdom_am" },
+];
 
 export function Footer() {
   return (
@@ -18,11 +22,17 @@ export function Footer() {
             ))}
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
-            {socials.map((s) => (
-              <a key={s} href="#" className="hover:text-foreground transition">
-                {s}
-              </a>
-            ))}
+          {socials.map((s) => (
+            <a
+              key={s.name}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition"
+            >
+              {s.name}
+            </a>
+          ))}
           </div>
         </div>
 
