@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, Pause } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { SectionLabel } from "./SectionLabel";
 
 // --- Video Configuration ---
@@ -24,6 +25,30 @@ function VideoBox({
   index: number;
 }) {
   const hasEmbed = embedUrl.trim().length > 0;
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  useEffect(() => {
+    if (!hasEmbed) return;
+    const onMessage = (e: MessageEvent) => {
+      if (typeof e.data !== "string") return;
+      try {
+        const data = JSON.parse(e.data);
+        if (data.event === "play") setIsPlaying(true);
+        if (data.event === "pause") setIsPlaying(false);
+      } catch {}
+    };
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [hasEmbed]);
+
+  const toggle = () => {
+    const w = iframeRef.current?.contentWindow;
+    if (!w) return;
+    w.postMessage(JSON.stringify({ method: isPlaying ? "pause" : "play" }), "*");
+    // Unmute on first user interaction
+    w.postMessage(JSON.stringify({ method: "setVolume", value: 1 }), "*");
+  };
 
   return (
     <motion.div
@@ -39,13 +64,34 @@ function VideoBox({
     >
       <div className="relative aspect-video overflow-hidden rounded-2xl border border-border bg-card/50 backdrop-blur-sm shadow-2xl shadow-accent/5">
         {hasEmbed ? (
-          <iframe
-            src={embedUrl}
-            title={name}
-            className="absolute inset-0 h-full w-full border-0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          <>
+            <iframe
+              ref={iframeRef}
+              src={embedUrl}
+              title={name}
+              className="absolute inset-0 h-full w-full border-0 pointer-events-none"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+            <button
+              type="button"
+              onClick={toggle}
+              aria-label={isPlaying ? "Pause video" : "Play video"}
+              className="absolute inset-0 flex items-center justify-center bg-transparent transition-colors hover:bg-background/20 focus:outline-none"
+            >
+              <span
+                className={`flex h-16 w-16 items-center justify-center rounded-full bg-background/70 backdrop-blur-md border border-border text-foreground transition-opacity duration-300 ${
+                  isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+                }`}
+              >
+                {isPlaying ? (
+                  <Pause className="h-6 w-6" />
+                ) : (
+                  <Play className="h-6 w-6 translate-x-0.5" />
+                )}
+              </span>
+            </button>
+          </>
         ) : (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-card/80 text-muted-foreground">
             <div className="flex h-14 w-14 items-center justify-center rounded-full border border-border bg-background/50">
