@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Play, Pause } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import Player from "@vimeo/player";
 import { SectionLabel } from "./SectionLabel";
 
 // --- Video Configuration ---
@@ -26,28 +27,35 @@ function VideoBox({
 }) {
   const hasEmbed = embedUrl.trim().length > 0;
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const playerRef = useRef<Player | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    if (!hasEmbed) return;
-    const onMessage = (e: MessageEvent) => {
-      if (typeof e.data !== "string") return;
-      try {
-        const data = JSON.parse(e.data);
-        if (data.event === "play") setIsPlaying(true);
-        if (data.event === "pause") setIsPlaying(false);
-      } catch {}
+    if (!hasEmbed || !iframeRef.current) return;
+    const player = new Player(iframeRef.current);
+    playerRef.current = player;
+    player.on("play", () => setIsPlaying(true));
+    player.on("pause", () => setIsPlaying(false));
+    player.on("ended", () => setIsPlaying(false));
+    return () => {
+      player.destroy().catch(() => {});
+      playerRef.current = null;
     };
-    window.addEventListener("message", onMessage);
-    return () => window.removeEventListener("message", onMessage);
   }, [hasEmbed]);
 
-  const toggle = () => {
-    const w = iframeRef.current?.contentWindow;
-    if (!w) return;
-    w.postMessage(JSON.stringify({ method: isPlaying ? "pause" : "play" }), "*");
-    // Unmute on first user interaction
-    w.postMessage(JSON.stringify({ method: "setVolume", value: 1 }), "*");
+  const toggle = async () => {
+    const player = playerRef.current;
+    if (!player) return;
+    try {
+      await player.setMuted(false);
+      if (isPlaying) {
+        await player.pause();
+      } else {
+        await player.play();
+      }
+    } catch {
+      // ignore
+    }
   };
 
   return (
