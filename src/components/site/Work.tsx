@@ -88,7 +88,7 @@ function VideoBox({
               className="absolute inset-0 flex items-center justify-center bg-transparent transition-colors hover:bg-background/20 focus:outline-none"
             >
               <span
-                className={`flex h-16 w-16 items-center justify-center rounded-full bg-background/70 backdrop-blur-md border border-border text-foreground transition-opacity duration-300 ${
+                className={`flex h-16 w-16 items-center justify-center rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-foreground shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-opacity duration-300 ${
                   isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
                 }`}
               >
