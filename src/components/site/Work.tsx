@@ -70,7 +70,7 @@ function VideoBox({
       }}
       className="group"
     >
-      <div className="relative aspect-[9/16] overflow-hidden rounded-2xl border border-border bg-card/50 backdrop-blur-sm shadow-2xl shadow-accent/5">
+      <div className="relative aspect-video overflow-hidden rounded-2xl border border-border bg-card/50 backdrop-blur-sm shadow-2xl shadow-accent/5">
         {hasEmbed ? (
           <>
             <iframe
@@ -142,7 +142,7 @@ export function Work() {
           </p>
         </div>
 
-        <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-16 max-w-6xl mx-auto">
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
           {PROJECT_VIDEOS.map((p, i) => (
             <VideoBox key={p.name} {...p} index={i} />
           ))}
