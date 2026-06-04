@@ -9,7 +9,7 @@ import { SectionLabel } from "./SectionLabel";
 // Format: https://www.youtube.com/embed/VIDEO_ID
 const PROJECT_VIDEOS: { name: string; tag: string; embedUrl: string }[] = [
   { name: "Omni ai — Product Demo", tag: "Product Demo", embedUrl: "https://player.vimeo.com/video/1196503546?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0" },
-  { name: "Northstar Launch Film", tag: "Launch Video", embedUrl: "https://player.vimeo.com/video/1196504260?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0" },
+  { name: "launchpad.trade. Teaser video", tag: "Launch Video", embedUrl: "https://player.vimeo.com/video/1196504260?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0" },
   { name: "Cohort — Series A Reel", tag: "Investor Deck Reel", embedUrl: "https://player.vimeo.com/video/1196504666?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0" },
 ];
 // ---------------------------
