@@ -38,7 +38,8 @@ export function Footer() {
 
         <h2
           aria-label="VSF Creative"
-          className="font-display leading-[0.85] tracking-[-0.04em] text-foreground lg:text-[16vw] text-8xl font-medium text-center"
+          className="font-display leading-[0.85] tracking-[-0.04em] text-foreground font-medium text-center whitespace-nowrap"
+          style={{ fontSize: "clamp(3rem, 16vw, 16rem)" }}
         >
           VSF <span className="font-accent">Creative</span>
         </h2>
