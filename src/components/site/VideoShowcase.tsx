@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Play, Pause } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import Player from "@vimeo/player";
 
@@ -11,6 +11,7 @@ export function VideoShowcase() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const playerRef = useRef<Player | null>(null);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -21,6 +22,9 @@ export function VideoShowcase() {
     player.on("play", () => setIsPlaying(true));
     player.on("pause", () => setIsPlaying(false));
     player.on("ended", () => setIsPlaying(false));
+    player.on("volumechange", ({ volume }: { volume: number }) => {
+      player.getMuted().then((m) => setIsMuted(m || volume === 0));
+    });
     player.ready().then(() => setIsReady(true));
 
     return () => {
@@ -33,12 +37,25 @@ export function VideoShowcase() {
     const player = playerRef.current;
     if (!player) return;
     try {
-      await player.setMuted(false);
       if (isPlaying) {
         await player.pause();
       } else {
         await player.play();
       }
+    } catch {
+      // ignore
+    }
+  };
+
+  const toggleMute = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const player = playerRef.current;
+    if (!player) return;
+    try {
+      const next = !isMuted;
+      await player.setMuted(next);
+      if (!next) await player.setVolume(1);
+      setIsMuted(next);
     } catch {
       // ignore
     }
@@ -64,7 +81,8 @@ export function VideoShowcase() {
             allowFullScreen
           />
           {isReady && (
-            <button
+            <>
+              <button
               type="button"
               onClick={toggle}
               aria-label={isPlaying ? "Pause video" : "Play video"}
@@ -81,7 +99,20 @@ export function VideoShowcase() {
                   <Play className="h-6 w-6 translate-x-0.5" />
                 )}
               </span>
-            </button>
+              </button>
+              <button
+                type="button"
+                onClick={toggleMute}
+                aria-label={isMuted ? "Unmute video" : "Mute video"}
+                className="absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full bg-black/40 backdrop-blur-xl border border-white/30 text-white shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-opacity duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none"
+              >
+                {isMuted ? (
+                  <VolumeX className="h-5 w-5" />
+                ) : (
+                  <Volume2 className="h-5 w-5" />
+                )}
+              </button>
+            </>
           )}
         </div>
       </motion.div>
