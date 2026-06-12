@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Player from "@vimeo/player";
 
 // --- Configuration ---
-const EMBED_URL = "https://player.vimeo.com/video/1200763047?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0";
+const EMBED_URL = "https://player.vimeo.com/video/1200763047?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0&quality=1080p";
 // ---------------------
 
 export function VideoShowcase() {
