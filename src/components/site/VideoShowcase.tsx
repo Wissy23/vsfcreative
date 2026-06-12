@@ -1,20 +1,48 @@
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, Pause } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import Player from "@vimeo/player";
 
 // --- Configuration ---
-// Option 1: Self-hosted or direct video file
-// Set VIDEO_SRC to a .mp4, .webm, etc. path or URL.
-// Example: VIDEO_SRC = "/showreel.mp4" or "https://cdn.example.com/reel.mp4"
-const VIDEO_SRC = ""; // <-- leave empty to use embed fallback
-
-// Option 2: YouTube / Vimeo / Loom embed link
-// Paste the full embed URL here (e.g., https://www.youtube.com/embed/VIDEO_ID)
-const EMBED_URL = "https://player.vimeo.com/video/1200763047?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0"; // <-- paste embed URL here if not using VIDEO_SRC
+const EMBED_URL = "https://player.vimeo.com/video/1200763047?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0";
 // ---------------------
 
 export function VideoShowcase() {
-  const hasVideo = VIDEO_SRC.trim().length > 0;
-  const hasEmbed = EMBED_URL.trim().length > 0;
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const playerRef = useRef<Player | null>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    if (!iframeRef.current) return;
+    const player = new Player(iframeRef.current);
+    playerRef.current = player;
+
+    player.on("play", () => setIsPlaying(true));
+    player.on("pause", () => setIsPlaying(false));
+    player.on("ended", () => setIsPlaying(false));
+    player.ready().then(() => setIsReady(true));
+
+    return () => {
+      player.destroy().catch(() => {});
+      playerRef.current = null;
+    };
+  }, []);
+
+  const toggle = async () => {
+    const player = playerRef.current;
+    if (!player) return;
+    try {
+      await player.setMuted(false);
+      if (isPlaying) {
+        await player.pause();
+      } else {
+        await player.play();
+      }
+    } catch {
+      // ignore
+    }
+  };
 
   return (
     <section id="video" className="relative z-10 mx-auto max-w-6xl px-6 lg:px-10 pb-8">
@@ -23,48 +51,41 @@ export function VideoShowcase() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="relative overflow-hidden rounded-2xl border border-border bg-card/50 backdrop-blur-sm shadow-2xl shadow-accent/5"
+        className="group relative overflow-hidden rounded-2xl border border-border bg-card/50 backdrop-blur-sm shadow-2xl shadow-accent/5"
       >
         {/* 16:9 wrapper */}
         <div className="relative aspect-video w-full">
-          {hasVideo ? (
-            <video
-              className="absolute inset-0 h-full w-full object-cover"
-              controls
-              autoPlay
-              loop
-              muted
-              playsInline
-              poster=""
-              preload="metadata"
+          <iframe
+            ref={iframeRef}
+            src={EMBED_URL}
+            title="Showreel"
+            className="absolute inset-0 h-full w-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+          {isReady && (
+            <button
+              type="button"
+              onClick={toggle}
+              aria-label={isPlaying ? "Pause video" : "Play video"}
+              className="absolute inset-0 flex items-center justify-center bg-transparent transition-colors hover:bg-background/20 focus:outline-none"
             >
-              <source src={VIDEO_SRC} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          ) : hasEmbed ? (
-            <iframe
-              src={EMBED_URL}
-              title="Showreel"
-              className="absolute inset-0 h-full w-full border-0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          ) : (
-            /* Placeholder state */
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-card/80 text-muted-foreground">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full border border-border bg-background/50">
-                <Play className="h-6 w-6 text-foreground" />
-              </div>
-              <p className="text-sm">
-                Add a video in{" "}
-                <code className="rounded bg-border px-1.5 py-0.5 text-xs text-foreground">
-                  VideoShowcase.tsx
-                </code>
-              </p>
-            </div>
+              <span
+                className={`flex h-16 w-16 items-center justify-center rounded-full bg-black/40 backdrop-blur-xl border border-white/30 text-white shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-opacity duration-300 ${
+                  isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+                }`}
+              >
+                {isPlaying ? (
+                  <Pause className="h-6 w-6" />
+                ) : (
+                  <Play className="h-6 w-6 translate-x-0.5" />
+                )}
+              </span>
+            </button>
           )}
         </div>
       </motion.div>
     </section>
   );
 }
+
