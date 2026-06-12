@@ -104,7 +104,7 @@ export function VideoShowcase() {
                 type="button"
                 onClick={toggleMute}
                 aria-label={isMuted ? "Unmute video" : "Mute video"}
-                className="absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full bg-black/40 backdrop-blur-xl border border-white/30 text-white shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-opacity duration-300 opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none"
+                className="absolute bottom-4 right-4 flex h-11 w-11 items-center justify-center rounded-full bg-black/40 backdrop-blur-xl border border-white/30 text-white shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-opacity duration-300 focus:outline-none"
               >
                 {isMuted ? (
                   <VolumeX className="h-5 w-5" />
