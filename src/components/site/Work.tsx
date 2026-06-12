@@ -8,9 +8,9 @@ import { SectionLabel } from "./SectionLabel";
 // Paste YouTube embed URLs for each project below.
 // Format: https://www.youtube.com/embed/VIDEO_ID
 const PROJECT_VIDEOS: { name: string; tag: string; embedUrl: string }[] = [
-  { name: "Omni ai   -   Ai Local Companion", tag: "Product Demo", embedUrl: "https://player.vimeo.com/video/1196503546?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0" },
-  { name: "launchpad.trade   -   Solana Trading API", tag: "Teaser Video", embedUrl: "https://player.vimeo.com/video/1196504260?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0" },
-  { name: "Cosmos   -   Visual Inspiration Platform", tag: "Launch video", embedUrl: "https://player.vimeo.com/video/1196504666?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0" },
+  { name: "Omni ai   -   Ai Local Companion", tag: "Product Demo", embedUrl: "https://player.vimeo.com/video/1196503546?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0&quality=1080p" },
+  { name: "launchpad.trade   -   Solana Trading API", tag: "Teaser Video", embedUrl: "https://player.vimeo.com/video/1196504260?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0&quality=1080p" },
+  { name: "Cosmos   -   Visual Inspiration Platform", tag: "Launch video", embedUrl: "https://player.vimeo.com/video/1196504666?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=0&muted=1&loop=1&background=1&controls=0&title=0&byline=0&portrait=0&quality=1080p" },
 ];
 // ---------------------------
 
